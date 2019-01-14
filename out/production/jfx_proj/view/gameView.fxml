@@ -1,0 +1,946 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="768.0" prefWidth="1024.0" style="-fx-background-color: #1a1a1a;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.GameController">
+   <children>
+      <MenuBar layoutY="1.0" maxWidth="1.7976931348623157E308" prefHeight="25.0" prefWidth="1024.0" style="-fx-background-color: #a42525;">
+        <menus>
+          <Menu fx:id="Game" mnemonicParsing="false" text="Game">
+            <items>
+              <MenuItem fx:id="Restart" mnemonicParsing="false" onAction="#restartAction" text="Restart" />
+                  <MenuItem fx:id="About" mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="Exit" mnemonicParsing="false" text="Exit" />
+            </items>
+          </Menu>
+          <Menu fx:id="Ship" mnemonicParsing="false" text="Ship">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Show Current Ship" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Help">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="How to play" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+      <TabPane fx:id="tab" layoutY="126.0" onMouseClicked="#tabAction" prefHeight="593.0" prefWidth="1024.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="tab1" style="-fx-background-color: #adad85;" text="Sublight Navigation">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="348.0" prefWidth="1003.0">
+                     <children>
+                        <Label layoutX="35.0" layoutY="14.0" text="SYSTEM VIEW" textFill="#a42525">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_scan" layoutX="37.0" layoutY="42.0" mnemonicParsing="false" onMouseClicked="#scanAction" prefHeight="25.0" prefWidth="109.0" style="-fx-background-color: #adad85;" text="SCAN">
+                           <font>
+                              <Font name="Courier New" size="20.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Label fx:id="lbl_distance1" layoutX="146.0" layoutY="113.0" text="DISTANCE:" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_distance2" layoutX="146.0" layoutY="143.0" text="DISTANCE:" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_distance3" layoutX="146.0" layoutY="174.0" text="DISTANCE:" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_object1" layoutX="304.0" layoutY="113.0" text="OBJECT:" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_object2" layoutX="304.0" layoutY="143.0" text="OBJECT:" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_object3" layoutX="304.0" layoutY="174.0" text="OBJECT:" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_travel1" layoutX="49.0" layoutY="111.0" mnemonicParsing="false" onMouseClicked="#travel1Action" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #adad85;" text="TRAVEL" visible="false">
+                           <font>
+                              <Font name="Courier New" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_travel2" layoutX="49.0" layoutY="141.0" mnemonicParsing="false" onMouseClicked="#travel2Action" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #adad85;" text="TRAVEL" visible="false">
+                           <font>
+                              <Font name="Courier New" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_travel3" layoutX="49.0" layoutY="172.0" mnemonicParsing="false" onMouseClicked="#travel3Action" prefHeight="25.0" prefWidth="76.0" style="-fx-background-color: #adad85;" text="TRAVEL" visible="false">
+                           <font>
+                              <Font name="Courier New" size="12.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Label fx:id="lbl_distdisplay1" layoutX="238.0" layoutY="113.0" text="1200" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_distdisplay2" layoutX="238.0" layoutY="143.0" text="1200" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_distdisplay3" layoutX="238.0" layoutY="175.0" text="1200" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_objdisplay1" layoutX="376.0" layoutY="113.0" text="1200" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_objdisplay2" layoutX="376.0" layoutY="144.0" text="1200" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_objdisplay3" layoutX="376.0" layoutY="174.0" text="1200" textFill="#bfbfbf" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <VBox layoutX="694.0" layoutY="65.0" prefHeight="200.0" prefWidth="172.0">
+                           <children>
+                              <RadioButton fx:id="rb_max" mnemonicParsing="false" text="MAXIMUM SPEED" textFill="#bfbfbf">
+                                 <font>
+                                    <Font name="Courier New" size="12.0" />
+                                 </font>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="speed" />
+                                 </toggleGroup>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="rb_med" mnemonicParsing="false" selected="true" text="STANDARD SPEED" textFill="#bfbfbf" toggleGroup="$speed">
+                                 <font>
+                                    <Font name="Courier New" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                              <RadioButton fx:id="rb_low" mnemonicParsing="false" text="CONSERVE FUEL" textFill="#bfbfbf" toggleGroup="$speed">
+                                 <font>
+                                    <Font name="Courier New" size="12.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets top="10.0" />
+                                 </VBox.margin>
+                              </RadioButton>
+                           </children>
+                        </VBox>
+                        <Label layoutX="694.0" layoutY="41.0" text="SPEED SETTING" textFill="#a42525">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="tab2" style="-fx-background-color: #adad85;" text="Hyperlane Navigation">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="645.0" layoutY="14.0" text="STAR MAP" textFill="#a42525">
+                           <font>
+                              <Font name="Courier New" size="25.0" />
+                           </font>
+                        </Label>
+                        <ImageView fitHeight="500.0" fitWidth="500.0" layoutX="456.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../resources/map_systems.jpg" />
+                           </image>
+                        </ImageView>
+                        <Separator layoutX="437.0" layoutY="28.0" prefWidth="200.0" />
+                        <Separator layoutX="775.0" layoutY="27.0" prefWidth="200.0" />
+                        <Separator layoutX="434.0" layoutY="27.0" orientation="VERTICAL" prefHeight="541.0" prefWidth="0.0" />
+                        <Separator layoutX="972.0" layoutY="27.0" orientation="VERTICAL" prefHeight="541.0" prefWidth="0.0" />
+                        <Label fx:id="lbl_hyperImpossible" layoutX="33.0" layoutY="243.0" prefHeight="52.0" prefWidth="407.0" text="--HYPERTRAVEL POSSIBLE ONLY FROM HAWKING POINTS--" textFill="#bfbfbf82">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_syst1" layoutX="237.0" layoutY="84.0" text="SYSTEM" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_dist1" layoutX="103.0" layoutY="85.0" text="DISTANCE" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_dist2" layoutX="103.0" layoutY="114.0" text="DISTANCE" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_dist3" layoutX="103.0" layoutY="144.0" text="DISTANCE" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_dist4" layoutX="103.0" layoutY="174.0" text="DISTANCE" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_dist5" layoutX="103.0" layoutY="205.0" text="DISTANCE" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_syst11" layoutX="237.0" layoutY="113.0" text="SYSTEM" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_syst12" layoutX="237.0" layoutY="143.0" text="SYSTEM" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_syst13" layoutX="237.0" layoutY="173.0" text="SYSTEM" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_syst14" layoutX="237.0" layoutY="204.0" text="SYSTEM" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_distdisp1" layoutX="193.0" layoutY="84.0" text="300" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_distdisp11" layoutX="193.0" layoutY="113.0" text="300" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_distdisp12" layoutX="193.0" layoutY="143.0" text="300" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_distdisp13" layoutX="193.0" layoutY="173.0" text="300" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_distdisp14" layoutX="193.0" layoutY="204.0" text="300" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_systemdisp1" layoutX="309.0" layoutY="84.0" text="XXXXXX" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_systemdisp2" layoutX="309.0" layoutY="113.0" text="XXXXXX" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_systemdisp3" layoutX="309.0" layoutY="143.0" text="XXXXXX" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_systemdisp4" layoutX="309.0" layoutY="173.0" text="XXXXXX" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_systemdisp5" layoutX="309.0" layoutY="204.0" text="XXXXXX" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="17.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="btn_refreshHyper" layoutX="67.0" layoutY="26.0" mnemonicParsing="false" onMouseClicked="#refreshHyperAction" prefHeight="38.0" prefWidth="340.0" style="-fx-background-color: #adad85;" text="ACCES NAVCOMPUTER">
+                           <font>
+                              <Font name="Courier New" size="20.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_course1" layoutX="14.0" layoutY="83.0" mnemonicParsing="false" onAction="#course1Action" style="-fx-background-color: #adad85;" text="SET COURSE" visible="false">
+                           <font>
+                              <Font name="Courier New Bold" size="11.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_course2" layoutX="14.0" layoutY="112.0" mnemonicParsing="false" onAction="#course2Action" style="-fx-background-color: #adad85;" text="SET COURSE" visible="false">
+                           <font>
+                              <Font name="Courier New Bold" size="11.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_course3" layoutX="14.0" layoutY="142.0" mnemonicParsing="false" onAction="#course3Action" style="-fx-background-color: #adad85;" text="SET COURSE" visible="false">
+                           <font>
+                              <Font name="Courier New Bold" size="11.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_course4" layoutX="14.0" layoutY="172.0" mnemonicParsing="false" onAction="#course4Action" style="-fx-background-color: #adad85;" text="SET COURSE" visible="false">
+                           <font>
+                              <Font name="Courier New Bold" size="11.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_course5" layoutX="14.0" layoutY="203.0" mnemonicParsing="false" onAction="#course5Action" style="-fx-background-color: #adad85;" text="SET COURSE" visible="false">
+                           <font>
+                              <Font name="Courier New Bold" size="11.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="btn_jump" disable="true" layoutX="72.0" layoutY="387.0" mnemonicParsing="false" onMouseClicked="#jumpAction" prefHeight="75.0" prefWidth="305.0" style="-fx-background-color: #a42525;" text="JUMP" textFill="#d7cdcd">
+                           <font>
+                              <Font name="Courier New" size="34.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="CROSSHAIR" />
+                           </cursor>
+                        </Button>
+                        <Label fx:id="lbl_estimateImpossible" layoutX="107.0" layoutY="295.0" prefHeight="52.0" prefWidth="235.0" text="-=HYPERJUMP ESTIMATE PENDING=-" textFill="#bfbfbf82">
+                           <font>
+                              <Font name="Courier New" size="13.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_hypertargetdisp" layoutX="253.0" layoutY="298.0" text="XXXXX" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_hyperfueldisp" layoutX="276.0" layoutY="328.0" text="XXXXX" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_hyperfuel" layoutX="97.0" layoutY="328.0" text="HYPERFUEL REQUIRED:" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_hypertargetdisp1" layoutX="97.0" layoutY="298.0" text="HYPERJUMP TARGET:" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New" size="15.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_hyperfuel1" layoutX="91.0" layoutY="355.0" text="HYPERDRIVE READY FOR SPINUP" textFill="#bfbfbf82" visible="false">
+                           <font>
+                              <Font name="Courier New Bold" size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab fx:id="tab3" style="-fx-background-color: #adad85;" text="Station Market">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane fx:id="gp_m_station" layoutX="120.0" layoutY="75.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="110.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="65.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="FOOD" textFill="#bfbfbf" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="PARTS" textFill="#bfbfbf" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="SPICE" textFill="#bfbfbf" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="ORE" textFill="#bfbfbf" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="BUY PRICE" textFill="#bfbfbf" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="COMODITY" textFill="#bfbfbf" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="SELL PRICE" textFill="#bfbfbf" GridPane.columnIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="CURRENT #" textFill="#bfbfbf" GridPane.columnIndex="5">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btn_m_buyfood" mnemonicParsing="false" onAction="#foodBuyAction" style="-fx-background-color: #adad85;" text="BUY" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CROSSHAIR" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_m_buyparts" mnemonicParsing="false" onAction="#partsBuyAction" style="-fx-background-color: #adad85;" text="BUY" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CROSSHAIR" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_m_buyspice" mnemonicParsing="false" onAction="#spiceBuyAction" style="-fx-background-color: #adad85;" text="BUY" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CROSSHAIR" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_m_buyore" mnemonicParsing="false" onAction="#oreBuyAction" style="-fx-background-color: #adad85;" text="BUY" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Courier New" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CROSSHAIR" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_m_sellFood" mnemonicParsing="false" onAction="#foodSellAction" style="-fx-background-color: #adad85;" text="SELL" GridPane.columnIndex="4" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CROSSHAIR" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_m_sellParts" mnemonicParsing="false" onAction="#partsSellAction" style="-fx-background-color: #adad85;" text="SELL" GridPane.columnIndex="4" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CROSSHAIR" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_m_sellSpice" mnemonicParsing="false" onAction="#spiceSellAction" style="-fx-background-color: #adad85;" text="SELL" GridPane.columnIndex="4" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CROSSHAIR" />
+                                 </cursor>
+                              </Button>
+                              <Button fx:id="btn_m_sellOre" mnemonicParsing="false" onAction="#oreSellAction" style="-fx-background-color: #adad85;" text="SELL" GridPane.columnIndex="4" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Courier New" size="14.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CROSSHAIR" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="lbl_m_FoodBuyPrice" text="XX" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_PartsBuyPrice" text="XX" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_SpiceBuyPrice" text="XX" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_OreBuyPrice" text="XX" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_FoodSellPrice" text="XX" textFill="#bfbfbf" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_PartsSellPrice" text="XX" textFill="#bfbfbf" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_SpiceSellPrice" text="XX" textFill="#bfbfbf" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_OreSellPrice" text="XX" textFill="#bfbfbf" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_CurFood" text="XX" textFill="#bfbfbf" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_CurParts" text="XX" textFill="#bfbfbf" GridPane.columnIndex="5" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_CurSpice" text="XX" textFill="#bfbfbf" GridPane.columnIndex="5" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_CurOre" text="XX" textFill="#bfbfbf" GridPane.columnIndex="5" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <GridPane fx:id="gp_m_fuel" layoutX="193.0" layoutY="304.0">
+                          <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="120.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="FUEL TYPE" textFill="#bfbfbf">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="PRICE" textFill="#bfbfbf" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="AMOUNT TO BUY" textFill="#bfbfbf" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="FUEL" textFill="#bfbfbf" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="HYPERFUEL" textFill="#bfbfbf" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_FuelBuyPrice" text="xx" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_m_HyperfuelBuyPrice" text="xx" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Button fx:id="btn_m_buyFuel" mnemonicParsing="false" onAction="#fuelBuyAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #adad85;" text="BUY" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                                 <cursor>
+                                    <Cursor fx:constant="CROSSHAIR" />
+                                 </cursor></Button>
+                              <Button fx:id="btn_m_buyHyperfuel" mnemonicParsing="false" onAction="#hyperfuelBuyAction" prefHeight="25.0" prefWidth="79.0" style="-fx-background-color: #adad85;" text="BUY" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                                 <cursor>
+                                    <Cursor fx:constant="CROSSHAIR" />
+                                 </cursor></Button>
+                              <TextField fx:id="tf_m_fuelAmount" alignment="CENTER" maxWidth="100.0" prefHeight="25.0" prefWidth="100.0" promptText="enter amount" style="-fx-background-color: #bfbfbf;" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <TextField fx:id="tf_m_hyperFuelAmount" alignment="CENTER" maxWidth="100.0" promptText="enter amount" style="-fx-background-color: #bfbfbf;" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                           </children>
+                        </GridPane>
+                        <Label fx:id="lbl_m_tradeimpossible" layoutX="158.0" layoutY="237.0" text="-=APPROACH STATION TO ACCES MARKET=-" textFill="#bfbfbf7d">
+                           <font>
+                              <Font name="Courier New" size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_m_lblFuel" layoutX="311.0" layoutY="269.0" text="LOCAL FUEL MARKET" textFill="#a42525">
+                           <font>
+                              <Font name="Courier New" size="23.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbl_m_lclMarket" layoutX="300.0" layoutY="38.0" text="LOCAL STATION MARKET" textFill="#a42525">
+                           <font>
+                              <Font name="Courier New" size="23.0" />
+                           </font>
+                        </Label>
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tab4" style="-fx-background-color: #adad85;" text="Ship">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <GridPane layoutX="27.0" layoutY="65.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="150.0" />
+                              <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label fx:id="lbl_s_dispfood" text="Label" textFill="#bfbfbf" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="FOOD" textFill="#bfbfbf">
+                                 <font>
+                                    <Font name="Courier New" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="PARTS" textFill="#bfbfbf" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="SPICE" textFill="#bfbfbf" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label text="ORE" textFill="#bfbfbf" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_s_dispparts" text="Label" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_s_dispspice" text="Label" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_s_dispore" text="Label" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label layoutX="75.0" layoutY="30.0" text="CARGOHOLD CONTENTS" textFill="#a42525">
+                           <font>
+                              <Font name="Courier New" size="20.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="68.0" layoutY="190.0" prefHeight="0.0" prefWidth="238.0" />
+                        <Separator layoutX="301.0" layoutY="42.0" orientation="VERTICAL" prefHeight="150.0" prefWidth="11.0" />
+                        <Separator layoutX="64.0" layoutY="42.0" orientation="VERTICAL" prefHeight="150.0" prefWidth="0.0" />
+                        <GridPane layoutX="512.0" layoutY="65.0">
+                          <columnConstraints>
+                            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="238.0" />
+                            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="40.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <Label text="NAME" textFill="#bfbfbf">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="MAX SPEED" textFill="#bfbfbf" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="FUEL CONSUPTION" textFill="#bfbfbf" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="FUEL CAPACITY" textFill="#bfbfbf" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text=" HYPERFUEL CONSUPTION " textFill="#bfbfbf" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="HYPERFUEL CAPACITY" textFill="#bfbfbf" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label text="SHIP VALUE" textFill="#bfbfbf" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_s_name" text="NAME" textFill="#bfbfbf" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_s_maxSpeed" text="NAME" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_s_fuelRate" text="NAME" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_s_maxFuel" text="NAME" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_s_hyperRate" text="NAME" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_s_maxHyperFuel" text="NAME" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="lbl_s_value" text="NAME" textFill="#bfbfbf" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                 <font>
+                                    <Font name="Courier New" size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </GridPane>
+                        <Label layoutX="677.0" layoutY="30.0" text="SHIP STATS" textFill="#a42525">
+                           <font>
+                              <Font name="Courier New" size="20.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="752.0" layoutY="64.0" orientation="VERTICAL" prefHeight="282.0" prefWidth="0.0" />
+                        <Separator layoutX="515.0" layoutY="106.0" prefHeight="3.0" prefWidth="323.0" />
+                        <Separator layoutX="515.0" layoutY="142.0" prefHeight="5.0" prefWidth="322.0" />
+                        <Separator layoutX="514.0" layoutY="184.0" prefHeight="4.0" prefWidth="323.0" />
+                        <Separator layoutX="515.0" layoutY="228.0" prefHeight="2.0" prefWidth="321.0" />
+                        <Separator layoutX="514.0" layoutY="265.0" prefHeight="3.0" prefWidth="324.0" />
+                        <Separator layoutX="514.0" layoutY="301.0" prefHeight="3.0" prefWidth="328.0" />
+                        <Separator layoutX="512.0" layoutY="344.0" prefHeight="3.0" prefWidth="325.0" />
+                        <Separator layoutX="509.0" layoutY="44.0" orientation="VERTICAL" prefHeight="300.0" prefWidth="11.0" />
+                        <Separator layoutX="513.0" layoutY="42.0" prefHeight="5.0" prefWidth="159.0" />
+                        <Separator layoutX="800.0" layoutY="43.0" prefHeight="4.0" prefWidth="33.0" />
+                        <Separator layoutX="836.0" layoutY="45.0" orientation="VERTICAL" prefHeight="302.0" prefWidth="5.0" />
+                     </children></AnchorPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+      <Label fx:id="lbl_date" layoutX="75.0" layoutY="36.0" text="0" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_system" layoutX="276.0" layoutY="80.0" text="Sol" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_location" layoutX="293.0" layoutY="36.0" text="deep space" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_credits" layoutX="118.0" layoutY="80.0" text="2000" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="36.0" text="DAY:" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="31.0" layoutY="80.0" text="CREDITS:" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="194.0" layoutY="36.0" text="LOCATION:" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="194.0" layoutY="80.0" text="SYSTEM:" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="502.0" layoutY="36.0" text="FUEL:" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="502.0" layoutY="80.0" text="HYPERFUEL:" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="751.0" layoutY="36.0" text="CARGO HOLD:" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_curcargo" layoutX="870.0" layoutY="36.0" text="1000" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_curhyper" layoutX="611.0" layoutY="80.0" text="1000" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_curfuel" layoutX="557.0" layoutY="36.0" text="1000" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_maxfuel" layoutX="617.0" layoutY="36.0" text="1000" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_maxhyper" layoutX="666.0" layoutY="80.0" text="1000" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbl_maxcargo" layoutX="929.0" layoutY="36.0" text="1000" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="606.0" layoutY="36.0" text="/" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="655.0" layoutY="80.0" text="/" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="918.0" layoutY="36.0" text="/" textFill="#bfbfbf">
+         <font>
+            <Font name="Courier New" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
